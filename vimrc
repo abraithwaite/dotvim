@@ -55,3 +55,6 @@ command Wq wq
 command Wqa wqa
 
 au BufRead,BufNewFile *.md set filetype=markdown
+
+" Ctrl-P include hidden files in fuzzy search
+let g:ctrlp_show_hidden=1
