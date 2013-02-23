@@ -55,5 +55,3 @@ command Wq wq
 command Wqa wqa
 
 au BufRead,BufNewFile *.md set filetype=markdown
-
-set runtimepath^=~/.vim/bundle/ctrlp.vim
