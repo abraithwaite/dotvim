@@ -8,10 +8,10 @@ colorscheme molokai
 set guioptions-=m "remove menu gvim
 set guioptions-=T "remove toolbar gvim
 set number " Show line numbers
-"set smartindent
-set tabpagemax=100
+set tabpagemax=100 "Tabpages
 set showmatch " Highlight matching close symbol
 set ai "autoindent
+set laststatus=2
 
 "default spacings
 set expandtab "Insert Spaces instead of Tabs
@@ -66,6 +66,11 @@ au BufRead,BufNewFile *.md set filetype=markdown
 
 " Ctrl-P plugin include hidden files in fuzzy search
 let g:ctrlp_show_hidden=1
+let g:ctrlp_max_files=100000
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(hg|svn|git|hglf)|lib)$',
+  \ 'file': '\v\.(pyc|swp|o|so|orig)$',
+  \ }
 
 " Vimcasts ep. 4 remove trailing spaces
 function! <SID>StripTrailingWhitespaces()
