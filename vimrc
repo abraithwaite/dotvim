@@ -88,3 +88,5 @@ endfunction
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 au BufWritePre *.py,*.js :call <SID>StripTrailingWhitespaces()
 
+let g:solarized_termcolors=256
+
