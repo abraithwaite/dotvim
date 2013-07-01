@@ -65,6 +65,7 @@ command Wqa wqa
 
 au BufRead,BufNewFile *.md set filetype=markdown
 au BufRead,BufNewFile Vagrantfile set filetype=ruby
+au BufRead,BufNewFile *.sls set filetype=yaml
 
 " Ctrl-P plugin include hidden files in fuzzy search
 let g:ctrlp_show_hidden=1
