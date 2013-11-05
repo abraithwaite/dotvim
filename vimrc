@@ -20,6 +20,9 @@ set sw=4 "Tab inserts 4 spaces
 set sts=4 "Backspace goes back 4 spaces
 set ts=4 "If there are tabs, display 4 spaces
 
+set list
+set listchars=tab:▸\ ,eol:¬
+
 "Python annoying tab fix
 let g:pyindent_open_paren = '&sw'
 
@@ -75,6 +78,7 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.(hg|svn|git|hglf)|lib)$',
   \ 'file': '\v\.(pyc|swp|o|so|orig)$',
   \ }
+
 
 " Vimcasts ep. 4 remove trailing spaces
 function! <SID>StripTrailingWhitespaces()
