@@ -18,10 +18,6 @@
 	path = bundle/solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
 	branch = master
-[submodule "bundle/pyflakes"]
-	path = bundle/pyflakes
-	url = git://github.com/kevinw/pyflakes-vim.git
-	branch = master
 [submodule "bundle/puppet"]
 	path = bundle/puppet
 	url = git://github.com/puppetlabs/puppet-syntax-vim.git
