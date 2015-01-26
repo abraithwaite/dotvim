@@ -6,16 +6,15 @@ syntax on
 filetype plugin indent on
 colorscheme molokai
 
-set guioptions-=m "remove menu gvim
-set guioptions-=T "remove toolbar gvim
 set number " Show line numbers
 set tabpagemax=100 "Tabpages
 set showmatch " Highlight matching close symbol
 set ai "autoindent
 set laststatus=2
+set backspace=2
 
 "default spacings
-set expandtab "Insert Spaces instead of Tabs
+" set expandtab "Insert Spaces instead of Tabs
 set sw=4 "Tab inserts 4 spaces
 set sts=4 "Backspace goes back 4 spaces
 set ts=4 "If there are tabs, display 4 spaces
