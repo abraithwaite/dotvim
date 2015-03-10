@@ -1,24 +1,24 @@
 [submodule "bundle/pathogen"]
 	path = bundle/pathogen
-	url = git://github.com/tpope/vim-pathogen.git
+	url = git@github.com:tpope/vim-pathogen.git
 	branch = master
 [submodule "bundle/ctrlp"]
 	path = bundle/ctrlp
-	url = git://github.com/kien/ctrlp.vim.git
+	url = git@github.com:kien/ctrlp.vim.git
 	branch = master
 [submodule "bundle/fugitive"]
 	path = bundle/fugitive
-	url = git://github.com/tpope/vim-fugitive.git
+	url = git@github.com:tpope/vim-fugitive.git
 	branch = master
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
-	url = git://github.com/scrooloose/nerdtree.git
+	url = git@github.com:scrooloose/nerdtree.git
 	branch = master
 [submodule "bundle/solarized"]
 	path = bundle/solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
+	url = git@github.com:altercation/vim-colors-solarized.git
 	branch = master
 [submodule "bundle/flake8"]
 	path = bundle/flake8
-	url = https://github.com/nvie/vim-flake8.git
+	url = git@github.com:nvie/vim-flake8.git
 	branch = master
