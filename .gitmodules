@@ -22,3 +22,6 @@
 	path = bundle/flake8
 	url = git@github.com:nvie/vim-flake8.git
 	branch = master
+[submodule "bundle/rust"]
+	path = bundle/rust
+	url = https://github.com/rust-lang/rust.vim.git
