@@ -25,3 +25,6 @@
 [submodule "bundle/rust"]
 	path = bundle/rust
 	url = https://github.com/rust-lang/rust.vim.git
+[submodule "bundle/scala"]
+	path = bundle/scala
+	url = git@github.com:derekwyatt/vim-scala.git
