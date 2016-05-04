@@ -13,12 +13,6 @@ set ai "autoindent
 set laststatus=2
 set backspace=2
 
-"default spacings
-" set expandtab "Insert Spaces instead of Tabs
-set sw=4 "Tab inserts 4 spaces
-set sts=4 "Backspace goes back 4 spaces
-set ts=4 "If there are tabs, display 4 spaces
-
 set list
 set listchars=tab:▸\ ,eol:¬
 
@@ -48,6 +42,11 @@ au FileType eruby set ts=2
 au FileType css set sw=2
 au FileType css set sts=2
 au FileType css set ts=2
+"Golang
+au FileType go set sw=4
+au FileType go set sts=4
+au FileType go set ts=4
+
 
 " Store swap files in fixed location, not in the current directory.
 " The commas delimit heiarchy.
@@ -68,6 +67,9 @@ command Wqa wqa
 au BufRead,BufNewFile *.md set filetype=markdown
 au BufRead,BufNewFile Vagrantfile set filetype=ruby
 au BufRead,BufNewFile *.sls set filetype=yaml
+au BufRead,BufNewFile *.sls set ts=2
+au BufRead,BufNewFile *.sls set sw=2
+au BufRead,BufNewFile *.sls set et
 au BufRead,BufNewFile master.cfg set filetype=python
 
 " Ctrl-P plugin include hidden files in fuzzy search
