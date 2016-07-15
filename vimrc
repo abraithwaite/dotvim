@@ -19,6 +19,10 @@ set listchars=tab:▸\ ,eol:¬
 "Python annoying tab fix
 let g:pyindent_open_paren = '&sw'
 
+" default tabstop
+set ts=4
+set sw=4
+
 "Java
 au FileType java set sw=2
 au FileType java set sts=2
