@@ -28,3 +28,6 @@
 [submodule "bundle/scala"]
 	path = bundle/scala
 	url = git@github.com:derekwyatt/vim-scala.git
+[submodule "bundle/terraform"]
+	path = bundle/terraform
+	url = https://github.com/hashivim/vim-terraform.git

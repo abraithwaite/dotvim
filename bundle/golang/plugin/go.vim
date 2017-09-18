@@ -18,8 +18,10 @@ let s:packages = [
       \ "github.com/jstemmer/gotags",
       \ "github.com/klauspost/asmfmt/cmd/asmfmt",
       \ "github.com/fatih/motion",
+      \ "github.com/fatih/gomodifytags",
       \ "github.com/zmb3/gogetdoc",
       \ "github.com/josharian/impl",
+      \ "github.com/dominikh/go-tools/cmd/keyify",
       \ ]
 
 " These commands are available on any filetypes
@@ -27,21 +29,20 @@ command! GoInstallBinaries call s:GoInstallBinaries(-1)
 command! GoUpdateBinaries call s:GoInstallBinaries(1)
 command! -nargs=? -complete=dir GoPath call go#path#GoPath(<f-args>)
 
-
 " GoInstallBinaries downloads and install all necessary binaries stated in the
 " packages variable. It uses by default $GOBIN or $GOPATH/bin as the binary
 " target install directory. GoInstallBinaries doesn't install binaries if they
 " exist, to update current binaries pass 1 to the argument.
 function! s:GoInstallBinaries(updateBinaries)
-  if $GOPATH == ""
-    echohl Error
-    echomsg "vim.go: $GOPATH is not set"
-    echohl None
+  let err = s:CheckBinaries()
+  if err != 0
     return
   endif
 
-  let err = s:CheckBinaries()
-  if err != 0
+  if go#path#Default() == ""
+    echohl Error
+    echomsg "vim.go: $GOPATH is not set and 'go env GOPATH' returns empty"
+    echohl None
     return
   endif
 
@@ -127,6 +128,10 @@ endfunction
 " ============================================================================
 "
 function! s:echo_go_info()
+  if !get(g:, "go_echo_go_info", 1)
+    return
+  endif
+
   if !exists('v:completed_item') || empty(v:completed_item)
     return
   endif
@@ -143,39 +148,68 @@ function! s:echo_go_info()
   redraws! | echo "vim-go: " | echohl Function | echon item.info | echohl None
 endfunction
 
+function! s:auto_type_info()
+  " GoInfo automatic update
+  if get(g:, "go_auto_type_info", 0)
+    call go#tool#Info(1)
+  endif
+endfunction
+
+function! s:auto_sameids()
+  " GoSameId automatic update
+  if get(g:, "go_auto_sameids", 0)
+    call go#guru#SameIds()
+  endif
+endfunction
+
+function! s:fmt_autosave()
+  " Go code formatting on save
+  if get(g:, "go_fmt_autosave", 1)
+    call go#fmt#Format(-1)
+  endif
+endfunction
+
+function! s:asmfmt_autosave()
+  " Go asm formatting on save
+  if get(g:, "go_asmfmt_autosave", 0)
+    call go#asmfmt#Format()
+  endif
+endfunction
+
+function! s:metalinter_autosave()
+  " run gometalinter on save
+  if get(g:, "go_metalinter_autosave", 0)
+    call go#lint#Gometa(1)
+  endif
+endfunction
+
+function! s:template_autocreate()
+  " create new template from scratch
+  if get(g:, "go_template_autocreate", 1)
+    call go#template#create()
+  endif
+endfunction
+
 augroup vim-go
   autocmd!
 
-  " GoInfo automatic update
-  if get(g:, "go_auto_type_info", 0)
-    autocmd CursorHold *.go nested call go#complete#Info(1)
-  endif
+  autocmd CursorHold *.go call s:auto_type_info()
+  autocmd CursorHold *.go call s:auto_sameids()
 
   " Echo the identifier information when completion is done. Useful to see
   " the signature of a function, etc...
   if exists('##CompleteDone')
-    autocmd CompleteDone *.go nested call s:echo_go_info()
+    autocmd CompleteDone *.go call s:echo_go_info()
   endif
 
-  " Go code formatting on save
-  if get(g:, "go_fmt_autosave", 1)
-    autocmd BufWritePre *.go call go#fmt#Format(-1)
-  endif
-
-  " Go asm formatting on save
-  if get(g:, "go_asmfmt_autosave", 1)
-    autocmd BufWritePre *.s call go#asmfmt#Format()
-  endif
-
-  " run gometalinter on save
-  if get(g:, "go_metalinter_autosave", 0)
-    autocmd BufWritePost *.go call go#lint#Gometa(1)
-  endif
-
-  " create new template from scratch
-  if get(g:, "go_template_autocreate", 1)
-    autocmd BufNewFile *.go call go#template#create()
-  endif
+  autocmd BufWritePre *.go call s:fmt_autosave()
+  autocmd BufWritePre *.s call s:asmfmt_autosave()
+  autocmd BufWritePost *.go call s:metalinter_autosave()
+  autocmd BufNewFile *.go call s:template_autocreate()
+  " clear SameIds when the buffer is unloaded so that loading another buffer
+  " in the same window doesn't highlight the most recently matched
+  " identifier's positions.
+  autocmd BufWinEnter *.go call go#guru#ClearSameIds()
 augroup END
 
 " vim: sw=2 ts=2 et

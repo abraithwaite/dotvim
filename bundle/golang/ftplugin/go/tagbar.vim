@@ -15,9 +15,9 @@ endif
 
 
 function! s:SetTagbar()
-  let bin_path = go#path#CheckBinPath(g:go_gotags_bin) 
-  if empty(bin_path) 
-    return 
+  let bin_path = go#path#CheckBinPath(g:go_gotags_bin)
+  if empty(bin_path)
+    return
   endif
 
   if !exists("g:tagbar_type_go")
@@ -45,7 +45,7 @@ function! s:SetTagbar()
           \ 'ctype' : 't',
           \ 'ntype' : 'n'
           \ },
-          \ 'ctagsbin'  : expand(bin_path),
+          \ 'ctagsbin'  : bin_path,
           \ 'ctagsargs' : '-sort -silent'
           \ }
   endif

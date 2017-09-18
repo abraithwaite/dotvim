@@ -7,12 +7,12 @@ let s:jobs = {}
 
 " new creates a new terminal with the given command. Mode is set based on the
 " global variable g:go_term_mode, which is by default set to :vsplit
-function! go#term#new(bang, cmd)
+function! go#term#new(bang, cmd) abort
   return go#term#newmode(a:bang, a:cmd, g:go_term_mode)
 endfunction
 
 " new creates a new terminal with the given command and window mode.
-function! go#term#newmode(bang, cmd, mode)
+function! go#term#newmode(bang, cmd, mode) abort
   let mode = a:mode
   if empty(mode)
     let mode = g:go_term_mode
@@ -23,6 +23,7 @@ function! go#term#newmode(bang, cmd, mode)
   let $GOPATH = go#path#Detect()
 
   " execute go build in the files directory
+  let l:winnr = winnr()
   let cd = exists('*haslocaldir') && haslocaldir() ? 'lcd ' : 'cd '
   let dir = getcwd()
 
@@ -36,7 +37,7 @@ function! go#term#newmode(bang, cmd, mode)
   setlocal noswapfile
   setlocal nobuflisted
 
-  let job = { 
+  let job = {
         \ 'stderr' : [],
         \ 'stdout' : [],
         \ 'bang' : a:bang,
@@ -47,12 +48,17 @@ function! go#term#newmode(bang, cmd, mode)
 
   let id = termopen(a:cmd, job)
 
+  if l:winnr !=# winnr()
+    exe l:winnr . "wincmd w"
+  endif
+
   execute cd . fnameescape(dir)
 
   " restore back GOPATH
   let $GOPATH = old_gopath
 
   let job.id = id
+  let job.cmd = a:cmd
   startinsert
 
   " resize new term if needed.
@@ -74,7 +80,7 @@ function! go#term#newmode(bang, cmd, mode)
   return id
 endfunction
 
-function! s:on_stdout(job_id, data)
+function! s:on_stdout(job_id, data, event) dict abort
   if !has_key(s:jobs, a:job_id)
     return
   endif
@@ -83,7 +89,7 @@ function! s:on_stdout(job_id, data)
   call extend(job.stdout, a:data)
 endfunction
 
-function! s:on_stderr(job_id, data)
+function! s:on_stderr(job_id, data, event) dict abort
   if !has_key(s:jobs, a:job_id)
     return
   endif
@@ -92,7 +98,7 @@ function! s:on_stderr(job_id, data)
   call extend(job.stderr, a:data)
 endfunction
 
-function! s:on_exit(job_id, exit_status)
+function! s:on_exit(job_id, exit_status, event) dict abort
   if !has_key(s:jobs, a:job_id)
     return
   endif
@@ -113,9 +119,9 @@ function! s:on_exit(job_id, exit_status)
 
   if !empty(errors)
     " close terminal we don't need it anymore
-    close 
+    close
 
-    call go#list#Populate(l:listtype, errors)
+    call go#list#Populate(l:listtype, errors, job.cmd)
     call go#list#Window(l:listtype, len(errors))
     if !self.bang
       call go#list#JumpToFirst(l:listtype)
