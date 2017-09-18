@@ -31,3 +31,6 @@
 [submodule "bundle/terraform"]
 	path = bundle/terraform
 	url = https://github.com/hashivim/vim-terraform.git
+[submodule "bundle/golang"]
+	path = bundle/golang
+	url = https://github.com/fatih/vim-go.git
