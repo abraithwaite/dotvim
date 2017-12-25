@@ -80,7 +80,7 @@ au BufRead,BufNewFile master.cfg set filetype=python
 let g:ctrlp_show_hidden=1
 let g:ctrlp_max_files=100000
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(hg|svn|git|hglf)|lib|vendor)$',
+  \ 'dir':  '\v[\/](\.(hg|svn|git|hglf)|vendor|node_modules)$',
   \ 'file': '\v\.(pyc|swp|o|so|orig)$',
   \ }
 
@@ -106,3 +106,4 @@ let g:go_highlight_structs = 1
 let g:go_fmt_command = "goimports"
 let g:terraform_fmt_on_save = 1
 
+hi QuickFixLine NONE
