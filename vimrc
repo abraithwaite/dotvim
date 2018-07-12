@@ -31,6 +31,7 @@ au FileType java set ts=2
 au FileType javascript set sw=2
 au FileType javascript set sts=2
 au FileType javascript set ts=2
+au FileType javascript set et
 "HTML
 au FileType html set sw=2
 au FileType html set sts=2

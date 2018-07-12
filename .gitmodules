@@ -37,3 +37,12 @@
 [submodule "bundle/solidity"]
 	path = bundle/solidity
 	url = https://github.com/tomlion/vim-solidity
+[submodule "bundle/surround"]
+	path = bundle/surround
+	url = https://github.com/tpope/vim-surround
+[submodule "bundle/vim-abolish"]
+	path = bundle/vim-abolish
+	url = git@github.com:tpope/vim-abolish.git
+[submodule "bundle/commentary"]
+	path = bundle/commentary
+	url = https://tpope.io/vim/commentary.git
