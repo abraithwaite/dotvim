@@ -46,3 +46,12 @@
 [submodule "bundle/commentary"]
 	path = bundle/commentary
 	url = https://tpope.io/vim/commentary.git
+[submodule "bundle/vim-typescript"]
+	path = bundle/vim-typescript
+	url = git@github.com:leafgarland/typescript-vim.git
+[submodule "bundle/vim-tsx"]
+	path = bundle/vim-tsx
+	url = git@github.com:ianks/vim-tsx.git
+[submodule "bundle/vim-graphql"]
+	path = bundle/vim-graphql
+	url = git@github.com:jparise/vim-graphql.git

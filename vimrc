@@ -20,9 +20,14 @@ set listchars=tab:▸\ ,eol:¬
 let g:pyindent_open_paren = '&sw'
 
 " default tabstop
-set ts=4
-set sw=4
+set ts=2
+set sw=2
+set et
 
+" python
+au FileType python set sw=4
+au FileType python set sts=4
+au FileType python set ts=4
 "Java
 au FileType java set sw=2
 au FileType java set sts=2
@@ -31,7 +36,6 @@ au FileType java set ts=2
 au FileType javascript set sw=2
 au FileType javascript set sts=2
 au FileType javascript set ts=2
-au FileType javascript set et
 "HTML
 au FileType html set sw=2
 au FileType html set sts=2
@@ -51,6 +55,7 @@ au FileType css set ts=2
 au FileType go set sw=4
 au FileType go set sts=4
 au FileType go set ts=4
+au FileType go set noet
 
 
 " Store swap files in fixed location, not in the current directory.
@@ -74,7 +79,7 @@ au BufRead,BufNewFile Vagrantfile set filetype=ruby
 au BufRead,BufNewFile *.sls set filetype=yaml
 au BufRead,BufNewFile *.sls set ts=2
 au BufRead,BufNewFile *.sls set sw=2
-au BufRead,BufNewFile *.sls set et
+" au BufRead,BufNewFile *.sls set et
 au BufRead,BufNewFile master.cfg set filetype=python
 
 " Ctrl-P plugin include hidden files in fuzzy search
