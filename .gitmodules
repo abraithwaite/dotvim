@@ -55,3 +55,6 @@
 [submodule "bundle/vim-graphql"]
 	path = bundle/vim-graphql
 	url = git@github.com:jparise/vim-graphql.git
+[submodule "bundle/ultisnips"]
+	path = bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips
