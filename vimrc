@@ -83,6 +83,7 @@ au BufRead,BufNewFile *.sls set sw=2
 au BufRead,BufNewFile master.cfg set filetype=python
 
 " Ctrl-P plugin include hidden files in fuzzy search
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_show_hidden=1
 let g:ctrlp_max_files=100000
 let g:ctrlp_custom_ignore = {
@@ -109,7 +110,11 @@ au BufWritePre *.py,*.js :call <SID>StripTrailingWhitespaces()
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command = "golines"
+let g:go_addtags_transform = "camelcase"
+let g:go_fmt_options = {
+    \ 'golines': '-m 128',
+    \ }
 let g:terraform_fmt_on_save = 1
 
 hi QuickFixLine NONE
