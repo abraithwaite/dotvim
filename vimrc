@@ -22,47 +22,46 @@ let g:pyindent_open_paren = '&sw'
 " default tabstop
 set ts=2
 set sw=2
-set et
+" set et
 
-" python
-au FileType python set sw=4
-au FileType python set sts=4
-au FileType python set ts=4
-"Java
-au FileType java set sw=2
-au FileType java set sts=2
-au FileType java set ts=2
-"Javascript
-au FileType javascript set sw=2
-au FileType javascript set sts=2
-au FileType javascript set ts=2
-"HTML
-au FileType html set sw=2
-au FileType html set sts=2
-au FileType html set ts=2
-"ruby
-au FileType ruby set sw=2
-au FileType ruby set sts=2
-au FileType ruby set ts=2
-au FileType eruby set sw=2
-au FileType eruby set sts=2
-au FileType eruby set ts=2
-"CSS
-au FileType css set sw=2
-au FileType css set sts=2
-au FileType css set ts=2
-"Golang
-au FileType go set sw=4
-au FileType go set sts=4
-au FileType go set ts=4
-au FileType go set noet
-
+"" python
+"au FileType python set sw=4
+"au FileType python set sts=4
+"au FileType python set ts=4
+""Java
+"au FileType java set sw=2
+"au FileType java set sts=2
+"au FileType java set ts=2
+""Javascript
+"au FileType javascript set sw=2
+"au FileType javascript set sts=2
+"au FileType javascript set ts=2
+""HTML
+"au FileType html set sw=2
+"au FileType html set sts=2
+"au FileType html set ts=2
+""ruby
+"au FileType ruby set sw=2
+"au FileType ruby set sts=2
+"au FileType ruby set ts=2
+"au FileType eruby set sw=2
+"au FileType eruby set sts=2
+"au FileType eruby set ts=2
+""CSS
+"au FileType css set sw=2
+"au FileType css set sts=2
+"au FileType css set ts=2
+""Golang
+"au FileType go set sw=4
+"au FileType go set sts=4
+"au FileType go set ts=4
+"au FileType go set noet
 
 " Store swap files in fixed location, not in the current directory.
 " The commas delimit heiarchy.
-set dir=~/.vimswap//,var/tmp//,/tmp//,.
-set undodir=~/.vimundo//,var/tmp//,/tmp//,.
-set backupdir=~/.vimbackup//,var/tmp//,tmp//,.
+" set dir=~/.vimswap//,var/tmp//,/tmp//,.
+" set undodir=~/.vimundo//,var/tmp//,/tmp//,.
+" set backupdir=~/.vimbackup//,var/tmp//,tmp//,.
 
 set t_Co=256
 
