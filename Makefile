@@ -1,5 +1,5 @@
 update:
-	git subtree add --prefix bundle/commentary     https://tpope.io/vim/commentary.git master --squash
+	git subtree add --prefix bundle/commentary     https://github.com/tpope/vim-commentary.git master --squash
 	git subtree add --prefix bundle/ctrlp          https://github.com/kien/ctrlp.vim.git master --squash
 	git subtree add --prefix bundle/flake8         https://github.com/nvie/vim-flake8.git master --squash
 	git subtree add --prefix bundle/fugitive       https://github.com/tpope/vim-fugitive.git master --squash
